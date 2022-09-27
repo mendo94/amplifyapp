@@ -1,8 +1,19 @@
-var a: string = "hello";
-var b = 5;
-var c = false;
+interface Person {
+  firstName: string;
+  lastName: string;
+  job: job;
+}
 
-var someArray: string[] = [];
-someArray.push(a);
+function generateEmail(input: Person): string {
+  return `${input.firstName}.${input.lastName}@email.com`;
+}
 
-someArray.push(b as any);
+type job = "Engineer" | "Programmer";
+
+console.log(
+  generateEmail({
+    firstName: "Rina",
+    lastName: "Mendoza",
+    job: "Programmer",
+  })
+);
