@@ -6,4 +6,11 @@ class Server {
     this.port = port;
     this.address = address;
   }
+
+  startServer() {
+    console.log(`starting server at ${this.address}: ${this.port}`);
+  }
 }
+
+const someServer = new Server(8080, "localhost");
+someServer.startServer();
