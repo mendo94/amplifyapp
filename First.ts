@@ -5,7 +5,7 @@ interface Person {
   isVisitor: boolean;
 }
 
-function generateMail(input: Person, force?: boolean): string | undefined {
+function generateEmail(input: Person, force?: boolean): string | undefined {
   if (input.isVisitor && !force) {
     return undefined;
   } else {
@@ -15,14 +15,23 @@ function generateMail(input: Person, force?: boolean): string | undefined {
 
 type job = "Engineer" | "Programmer";
 
-console.log(
-  generateMail(
-    {
-      firstName: "Rina",
-      lastName: "Mendoza",
-      job: "Programmer",
-      isVisitor: true,
-    },
-    true
-  )
-);
+function isPerson(potentialPerson: any): boolean {
+  if ("firstName" in potentialPerson && "lastName" in potentialPerson) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function printEmailIfTrue(potentialPerson: any): void {
+  if (isPerson(potentialPerson)) {
+    console.log(generateEmail(potentialPerson));
+  } else {
+    console.log("Input is not a person");
+  }
+}
+
+printEmailIfTrue({
+  firstName: "John",
+  lastName: "Doe",
+});
